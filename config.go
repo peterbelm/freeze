@@ -32,10 +32,14 @@ type Config struct {
 	Language    string `json:"language,omitempty" help:"Language of code file." short:"l" group:"Settings" placeholder:"go"`
 	Theme       string `json:"theme" help:"Theme to use for syntax highlighting." short:"t" group:"Settings" placeholder:"charm"`
 	Wrap        int    `json:"wrap" help:"Wrap lines at a specific width." short:"w" group:"Settings" default:"0" placeholder:"80"`
+	RemoveExtraLine bool   `json:"remove_extra_line" help:"Remove trailing blank line." group:"Settings" default:"false"`
 
 	Output         string        `json:"output,omitempty" help:"Output location for {{.svg}}, {{.png}}, or {{.webp}}." short:"o" group:"Settings" default:"" placeholder:"freeze.svg"`
 	Execute        string        `json:"-" help:"Capture output of command execution." short:"x" group:"Settings" default:""`
 	ExecuteTimeout time.Duration `json:"-" help:"Execution timeout." group:"Settings" default:"10s" prefix:"execute." name:"timeout" hidden:""`
+	ShowPrompt     bool          `json:"-" help:"Show prompt and command in output." group:"Settings" default:"false" prefix:"execute." name:"showPrompt"`
+	PromptFormat   string        `json:"-" help:"Prompt format to display before command." group:"Settings" default:"\033[01;32m[user]@[hostname]\033[00m:\033[01;34m[wd]\033[00m$" prefix:"execute." name:"promptFormat"`
+	ExpectTimeout  bool          `json:"-" help:"Do not error if the PTY process times out." group:"Settings" default:"false" prefix:"execute." name:"expectTimeout"`
 
 	// Decoration
 	Border Border `json:"border" embed:"" prefix:"border." group:"Border"`

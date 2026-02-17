@@ -258,6 +258,11 @@ func main() {
 	imageWidth := float64(w)
 	imageHeight := float64(h)
 
+	// Optionally remove extra line added by chroma
+	if config.RemoveExtraLine {
+		imageHeight -= defaultFontSize * defaultLineHeight
+	}
+
 	imageWidth *= scale
 	imageHeight *= scale
 

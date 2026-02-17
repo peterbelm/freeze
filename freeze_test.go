@@ -143,6 +143,14 @@ func TestFreezeConfigurations(t *testing.T) {
 			output: "execute",
 		},
 		{
+			flags:  []string{"--execute", `echo HelloPrompt`, "--show-prompt"},
+			output: "execute-show-prompt",
+		},
+		{
+			flags:  []string{"--execute", `echo CustomPrompt`, "--show-prompt", "--prompt-string", "#"},
+			output: "execute-custom-prompt",
+		},
+		{
 			input:  "test/input/bubbletea.model",
 			flags:  []string{"--language", "go", "--height", "800", "--width", "750", "--config", "full", "--window=false", "--show-line-numbers"},
 			output: "bubbletea",
